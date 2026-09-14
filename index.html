@@ -1,0 +1,262 @@
+
+DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Raj Music Hub</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #101010;
+            color: white;
+        }
+
+        header {
+            background: #181818;
+            padding: 18px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff2d55;
+        }
+
+        nav {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        nav button {
+            background: #292929;
+            color: white;
+            border: none;
+            padding: 9px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        nav button:hover {
+            background: #ff2d55;
+        }
+
+        .hero {
+            padding: 40px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #40152a, #111);
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: #ccc;
+        }
+
+        .search {
+            padding: 20px;
+        }
+
+        .search input {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        section {
+            padding: 10px 20px 30px;
+        }
+
+        section h2 {
+            margin-bottom: 18px;
+        }
+
+        .songs,
+        .videos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: #1c1c1c;
+            border-radius: 12px;
+            overflow: hidden;
+            padding-bottom: 15px;
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            background: #292929;
+        }
+
+        .card h3 {
+            padding: 12px 15px 5px;
+        }
+
+        .card p {
+            padding: 0 15px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        audio,
+        video {
+            width: 90%;
+            margin: 12px 5%;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #181818;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Raj <span>Music Hub</span></div>
+
+    <nav>
+        <button onclick="showSection('songs')">🎵 Songs</button>
+        <button onclick="showSection('videos')">🎬 Videos</button>
+    </nav>
+</header>
+
+<div class="hero">
+    <h1>Welcome to Raj Music Hub 🎧</h1>
+    <p>Listen to music and watch videos in one place.</p>
+</div>
+
+<div class="search">
+    <input
+        type="text"
+        id="searchBox"
+        placeholder="🔍 Search songs or videos..."
+        onkeyup="searchContent()"
+    >
+</div>
+
+<section id="songs">
+    <h2>🎵 Latest Songs</h2>
+
+    <div class="songs">
+
+        <div class="card">
+            <img class="thumbnail"
+                 src="https://picsum.photos/500/300?random=1">
+
+            <h3>My First Song</h3>
+            <p>Raj Artist</p>
+
+            <audio controls>
+                <source src="song1.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <div class="card">
+            <img class="thumbnail"
+                 src="https://picsum.photos/500/300?random=2">
+
+            <h3>Beautiful Night</h3>
+            <p>Raj Artist</p>
+
+            <audio controls>
+                <source src="song2.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+    </div>
+</section>
+
+<section id="videos">
+    <h2>🎬 Latest Videos</h2>
+
+    <div class="videos">
+
+        <div class="card">
+            <video controls poster="https://picsum.photos/500/300?random=3">
+                <source src="video1.mp4" type="video/mp4">
+            </video>
+
+            <h3>My First Video</h3>
+            <p>Raj Channel</p>
+        </div>
+
+        <div class="card">
+            <video controls poster="https://picsum.photos/500/300?random=4">
+                <source src="video2.mp4" type="video/mp4">
+            </video>
+
+            <h3>My Second Video</h3>
+            <p>Raj Channel</p>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    © 2026 Raj Music Hub • Made with ❤️
+</footer>
+
+<script>
+    function showSection(section) {
+
+        document.getElementById(section).scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+    function searchContent() {
+
+        let search =
+            document.getElementById("searchBox")
+            .value.toLowerCase();
+
+        let cards =
+            document.querySelectorAll(".card");
+
+        cards.forEach(function(card) {
+
+            let text =
+                card.innerText.toLowerCase();
+
+            if (text.includes(search)) {
+                card.style.display = "";
+            } else {
+                card.style.display = "none";
+            }
+
+        });
+    }
+</script>
+
+</body>
+  </html>
