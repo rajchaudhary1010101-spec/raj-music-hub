@@ -149,7 +149,32 @@
 }
     </style>
 </head>
+<script>
+function showSection(section) {
+    document.getElementById(section).scrollIntoView({
+        behavior: "smooth"
+    });
+}
 
+function searchContent() {
+    const search = document
+        .getElementById("searchBox")
+        .value
+        .toLowerCase();
+
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+
+        if (text.includes(search)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+</script>
 <body>
 <div class="video-container">
   <iframe
