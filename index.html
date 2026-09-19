@@ -2,59 +2,820 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <!-- =========================
-         SEO
-    ========================= -->
-
-    <title>Always Raj</title>
-
     <meta name="description"
-          content="Always Raj - Listen to music, watch videos, and enjoy the latest songs and entertainment in one place.">
+          content="Raj Music Hub - Listen to music and watch videos in one place. Latest songs, music videos and entertainment.">
 
     <meta name="keywords"
-          content="Always Raj, music, songs, videos, Nepali music, music videos">
+          content="Raj Music Hub, music, songs, videos, Nepali music">
 
     <meta name="author"
-          content="Always Raj">
+          content="Raj Music Hub">
 
-    <meta name="robots"
-          content="index, follow">
+    <title>Raj Music Hub | Music & Videos</title>
 
-    <link rel="canonical"
-          href="https://rajchaudhary1010101-spec.github.io/">
-
-
-    <!-- =========================
-         WEBSITE LOGO
-    ========================= -->
-
+    <!-- Website favicon -->
     <link rel="icon"
           type="image/png"
           href="logo.png">
 
-    <link rel="shortcut icon"
-          type="image/png"
-          href="logo.png">
+    <style>
 
-    <link rel="apple-touch-icon"
-          href="logo.png">
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* =========================
+           BODY
+        ========================= */
+
+        body {
+            background: #101010;
+            color: white;
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #181818;
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border-bottom: 1px solid #292929;
+        }
+
+
+        /* =========================
+           LOGO
+        ========================= */
+
+        .logo {
+            display: flex;
+            align-items: center;
+
+            text-decoration: none;
+            color: white;
+
+            cursor: pointer;
+        }
+
+        .logo img {
+            width: 58px;
+            height: 58px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 2px solid #ff2d55;
+
+            box-shadow:
+                0 0 10px rgba(255, 45, 85, 0.5);
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        nav button {
+            background: #292929;
+            color: white;
+
+            border: none;
+
+            padding: 10px 16px;
+
+            border-radius: 25px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            transition: 0.3s;
+        }
+
+        nav button:hover {
+            background: #ff2d55;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            padding: 50px 20px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #40152a,
+                    #111
+                );
+
+            border-bottom: 1px solid #292929;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: #ccc;
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           FEATURED VIDEO
+        ========================= */
+
+        .featured-video {
+            width: 100%;
+            max-width: 900px;
+
+            margin: 30px auto;
+
+            padding: 0 20px;
+        }
+
+        .featured-video iframe {
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            border: none;
+
+            border-radius: 15px;
+
+            display: block;
+
+            background: #000;
+
+            box-shadow:
+                0 5px 30px rgba(0, 0, 0, 0.5);
+        }
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search {
+            padding: 20px;
+
+            max-width: 900px;
+
+            margin: auto;
+        }
+
+        .search input {
+            width: 100%;
+
+            padding: 15px 18px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            outline: none;
+
+            font-size: 16px;
+
+            background: #292929;
+
+            color: white;
+        }
+
+        .search input::placeholder {
+            color: #aaa;
+        }
+
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        section {
+            padding: 20px 20px 40px;
+
+            max-width: 1200px;
+
+            margin: auto;
+        }
+
+        section h2 {
+            margin-bottom: 20px;
+
+            font-size: 25px;
+        }
+
+
+        /* =========================
+           CARDS GRID
+        ========================= */
+
+        .songs,
+        .videos {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(260px, 1fr)
+                );
+
+            gap: 20px;
+        }
+
+
+        /* =========================
+           CARD
+        ========================= */
+
+        .card {
+            background: #1c1c1c;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            padding-bottom: 15px;
+
+            border: 1px solid #292929;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+
+            border-color: #ff2d55;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+
+        /* =========================
+           THUMBNAIL
+        ========================= */
+
+        .thumbnail {
+            width: 100%;
+
+            height: 180px;
+
+            object-fit: cover;
+
+            background: #292929;
+        }
+
+
+        /* =========================
+           CARD TEXT
+        ========================= */
+
+        .card h3 {
+            padding: 15px 15px 5px;
+
+            font-size: 19px;
+        }
+
+        .card p {
+            padding: 0 15px;
+
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           YOUTUBE VIDEO
+        ========================= */
+
+        .youtube-video {
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            border: none;
+
+            display: block;
+
+            background: black;
+        }
+
+
+        /* =========================
+           AUDIO
+        ========================= */
+
+        audio {
+            width: 90%;
+
+            margin: 15px 5%;
+        }
+
+
+        /* =========================
+           LOCAL VIDEO
+        ========================= */
+
+        video {
+            width: 100%;
+
+            display: block;
+
+            background: black;
+
+            aspect-ratio: 16 / 9;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+
+            padding: 30px 20px;
+
+            background: #181818;
+
+            color: #888;
+
+            margin-top: 30px;
+
+            border-top: 1px solid #292929;
+        }
+
+        footer strong {
+            color: #ff2d55;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 10px 15px;
+            }
+
+            .logo img {
+                width: 52px;
+                height: 52px;
+            }
+
+            nav {
+                gap: 6px;
+            }
+
+            nav button {
+                padding: 8px 12px;
+
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 40px 15px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            section {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .songs,
+            .videos {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
 
 
     <!-- =========================
-         GOOGLE / SOCIAL PREVIEW
+         HEADER
     ========================= -->
 
-    <meta property="og:title"
-          content="Always Raj">
+    <header>
 
-    <meta property="og:description"
-          content="Always Raj - Listen to music, watch videos, and enjoy the latest songs and entertainment in one place.">
+        <!-- Your new photo logo -->
+        <a href="index.html" class="logo">
 
-    <meta property="og:image"
-          content="https://rajchaudhary101
+            <img
+                src="logo.png"
+                alt="Raj Music Hub Logo">
+
+        </a>
+
+
+        <nav>
+
+            <button onclick="showSection('songs')">
+                🎵 Songs
+            </button>
+
+            <button onclick="showSection('videos')">
+                🎬 Videos
+            </button>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <div class="hero">
+
+        <h1>
+            Always Xyang Maya Xa 🎧
+        </h1>
+
+        <p>
+            Listen to music and watch videos in one place.
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         FEATURED YOUTUBE VIDEO
+    ========================= -->
+
+    <div class="featured-video">
+
+        <iframe
+            src="https://www.youtube.com/embed/CkDMFYUVVh4"
+            title="Raj Music Hub Featured Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+
+
+    <!-- =========================
+         SEARCH
+    ========================= -->
+
+    <div class="search">
+
+        <input
+            type="text"
+            id="searchBox"
+            placeholder="🔍 Search songs or videos..."
+            onkeyup="searchContent()">
+
+    </div>
+
+
+
+    <!-- =========================
+         SONGS
+    ========================= -->
+
+    <section id="songs">
+
+        <h2>
+            🎵 Latest Songs
+        </h2>
+
+
+        <div class="songs">
+
+
+            <!-- SONG 1 -->
+
+            <div class="card searchable">
+
+                <iframe
+                    class="youtube-video"
+                    src="https://www.youtube.com/embed/ocRzt5NvI7A"
+                    title="My First Song"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+
+                <h3>
+                    My First Song
+                </h3>
+
+                <p>
+                    Raj Artist
+                </p>
+
+            </div>
+
+
+
+            <!-- SONG 2 -->
+
+            <div class="card searchable">
+
+                <iframe
+                    class="youtube-video"
+                    src="https://www.youtube.com/embed/t5OKlU0icRs"
+                    title="Raj Music Song"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+
+                <h3>
+                    Raj Music Song
+                </h3>
+
+                <p>
+                    Raj Artist
+                </p>
+
+            </div>
+
+
+
+            <!-- SONG 3 -->
+
+            <div class="card searchable">
+
+                <iframe
+                    class="youtube-video"
+                    src="https://www.youtube.com/embed/09Urt8CSQAA"
+                    title="Beautiful Music"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+
+                <h3>
+                    Beautiful Music
+                </h3>
+
+                <p>
+                    Raj Artist
+                </p>
+
+            </div>
+
+
+
+            <!-- LOCAL AUDIO SONG -->
+
+            <div class="card searchable">
+
+                <img
+                    class="thumbnail"
+                    src="https://picsum.photos/500/300?random=2"
+                    alt="Beautiful Night">
+
+                <h3>
+                    Beautiful Night
+                </h3>
+
+                <p>
+                    Raj Artist
+                </p>
+
+                <audio controls>
+
+                    <source
+                        src="song2.mp3"
+                        type="audio/mpeg">
+
+                    Your browser does not support audio.
+
+                </audio>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         VIDEOS
+    ========================= -->
+
+    <section id="videos">
+
+        <h2>
+            🎬 Latest Videos
+        </h2>
+
+
+        <div class="videos">
+
+
+            <!-- VIDEO 1 -->
+
+            <div class="card searchable">
+
+                <video
+                    controls
+                    preload="metadata"
+                    poster="https://picsum.photos/500/300?random=3">
+
+                    <source
+                        src="video1.mp4"
+                        type="video/mp4">
+
+                    Your browser does not support video.
+
+                </video>
+
+                <h3>
+                    Raj Music Video 1
+                </h3>
+
+                <p>
+                    Raj Music Hub
+                </p>
+
+            </div>
+
+
+
+            <!-- VIDEO 2 -->
+
+            <div class="card searchable">
+
+                <video
+                    controls
+                    preload="metadata"
+                    poster="https://picsum.photos/500/300?random=4">
+
+                    <source
+                        src="video2.mp4"
+                        type="video/mp4">
+
+                    Your browser does not support video.
+
+                </video>
+
+                <h3>
+                    Raj Music Video 2
+                </h3>
+
+                <p>
+                    Raj Music Hub
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026
+            <strong>Raj Music Hub</strong>
+            — All Rights Reserved.
+        </p>
+
+        <p>
+            🎵 Listen • 🎬 Watch • ❤️ Enjoy
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /* =========================
+           SHOW SECTION
+        ========================= */
+
+        function showSection(sectionId) {
+
+            const section =
+                document.getElementById(sectionId);
+
+            if (section) {
+
+                section.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+
+        }
+
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        function searchContent() {
+
+            const searchBox =
+                document.getElementById("searchBox");
+
+            const searchText =
+                searchBox.value.toLowerCase().trim();
+
+            const cards =
+                document.querySelectorAll(".searchable");
+
+
+            cards.forEach(function(card) {
+
+                const text =
+                    card.innerText.toLowerCase();
+
+                if (text.includes(searchText)) {
+
+                    card.style.display = "";
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
