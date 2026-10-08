@@ -13,10 +13,10 @@
     ========================= -->
 
     <meta name="description"
-          content="Raj Music Hub - Listen to music and watch videos in one place. Latest songs, music videos and entertainment.">
+          content="Raj Music Hub - Listen to songs, watch music videos and enjoy entertainment in one place.">
 
     <meta name="keywords"
-          content="Raj Music Hub, music, songs, videos, Nepali music">
+          content="Raj Music Hub, Raj Music, Nepali music, Nepali songs, music videos, songs, entertainment">
 
     <meta name="author"
           content="Raj Music Hub">
@@ -33,6 +33,15 @@
     ========================= -->
 
     <title>Raj Music Hub | Music & Videos</title>
+
+
+    <!-- =========================
+         CANONICAL URL
+    ========================= -->
+
+    <link rel="canonical"
+          href="https://rajchaudhary1010101-spec.github.io/raj-music-hub/">
+
 
 
     <!-- =========================
@@ -54,13 +63,6 @@
           href="logo.png">
 
 
-    <!-- =========================
-         CANONICAL URL
-    ========================= -->
-
-    <link rel="canonical"
-          href="https://rajchaudhary1010101-spec.github.io/">
-
 
     <!-- =========================
          OPEN GRAPH
@@ -73,16 +75,17 @@
           content="Raj Music Hub | Music & Videos">
 
     <meta property="og:description"
-          content="Listen to music and watch videos on Raj Music Hub.">
-
-    <meta property="og:image"
-          content="https://rajchaudhary1010101-spec.github.io/logo.png">
+          content="Listen to songs and watch music videos on Raj Music Hub.">
 
     <meta property="og:url"
-          content="https://rajchaudhary1010101-spec.github.io/">
+          content="https://rajchaudhary1010101-spec.github.io/raj-music-hub/">
+
+    <meta property="og:image"
+          content="https://rajchaudhary1010101-spec.github.io/raj-music-hub/logo.png">
 
     <meta property="og:site_name"
           content="Raj Music Hub">
+
 
 
     <!-- =========================
@@ -96,14 +99,15 @@
           content="Raj Music Hub | Music & Videos">
 
     <meta name="twitter:description"
-          content="Listen to music and watch videos on Raj Music Hub.">
+          content="Listen to songs and watch music videos on Raj Music Hub.">
 
     <meta name="twitter:image"
-          content="https://rajchaudhary1010101-spec.github.io/logo.png">
+          content="https://rajchaudhary1010101-spec.github.io/raj-music-hub/logo.png">
+
 
 
     <!-- =========================
-         GOOGLE WEBSITE STRUCTURED DATA
+         STRUCTURED DATA
     ========================= -->
 
     <script type="application/ld+json">
@@ -111,11 +115,17 @@
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "Raj Music Hub",
-        "alternateName": "Raj Music Hub",
-        "url": "https://rajchaudhary1010101-spec.github.io/"
+        "alternateName": "Raj Music",
+        "url": "https://rajchaudhary1010101-spec.github.io/raj-music-hub/",
+        "description": "Raj Music Hub - Listen to songs and watch music videos."
     }
     </script>
 
+
+
+    <!-- =========================
+         CSS
+    ========================= -->
 
     <style>
 
@@ -531,6 +541,7 @@
             .videos {
                 grid-template-columns: 1fr;
             }
+
         }
 
     </style>
@@ -547,8 +558,9 @@
 
     <header>
 
-        <a href="index.html"
-           class="logo">
+        <a href="./"
+           class="logo"
+           aria-label="Raj Music Hub Home">
 
             <img
                 src="logo.png"
@@ -559,12 +571,21 @@
 
         <nav>
 
-            <button onclick="showSection('songs')">
+            <button
+                type="button"
+                onclick="showSection('songs')">
+
                 🎵 Songs
+
             </button>
 
-            <button onclick="showSection('videos')">
+
+            <button
+                type="button"
+                onclick="showSection('videos')">
+
                 🎬 Videos
+
             </button>
 
         </nav>
@@ -600,6 +621,7 @@
         <iframe
             src="https://www.youtube.com/embed/CkDMFYUVVh4"
             title="Raj Music Hub Featured Video"
+            loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
         </iframe>
@@ -618,7 +640,8 @@
             type="text"
             id="searchBox"
             placeholder="🔍 Search songs or videos..."
-            onkeyup="searchContent">
+            aria-label="Search songs or videos"
+            oninput="searchContent()">
 
     </div>
 
@@ -645,7 +668,7 @@
                 <iframe
                     class="youtube-video"
                     src="https://www.youtube.com/embed/ocRzt5NvI7A"
-                    title="My First Song"
+                    title="My First Song - Raj Music Hub"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen>
@@ -670,7 +693,7 @@
                 <iframe
                     class="youtube-video"
                     src="https://www.youtube.com/embed/t5OKlU0icRs"
-                    title="Raj Music Song"
+                    title="Raj Music Song - Raj Music Hub"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen>
@@ -695,7 +718,7 @@
                 <iframe
                     class="youtube-video"
                     src="https://www.youtube.com/embed/09Urt8CSQAA"
-                    title="Beautiful Music"
+                    title="Beautiful Music - Raj Music Hub"
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen>
@@ -883,7 +906,9 @@
                 document.getElementById("searchBox");
 
             const searchText =
-                searchBox.value.toLowerCase().trim();
+                searchBox.value
+                    .toLowerCase()
+                    .trim();
 
             const cards =
                 document.querySelectorAll(".searchable");
